@@ -16,7 +16,7 @@ namespace ListenIn.Commands
 
         public string Description { get; set; } = "Listen to voice chat regardless of your role";
 
-        public string Usage { get; set; } = "voiceoverride [players/roles]";
+        public string Usage { get; set; } = "voiceoverride [players/roles/teams]";
 
         string ICommand.Command { get; } = "voiceoverride";
 
