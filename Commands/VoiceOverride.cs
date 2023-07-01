@@ -32,6 +32,21 @@ namespace ListenIn.Commands
                     return true;
                 }
 
+                VoiceOverrides overrides;
+                if (!Extensions.Overrides.TryGetValue(playerSender.ReferenceHub, out overrides))
+                {
+                    overrides = new VoiceOverrides();
+                    Extensions.Overrides.Add(playerSender.ReferenceHub, overrides);
+                }
+
+                if (arguments.ElementAt(0) == "all")
+                {
+                    overrides.HearAll = !overrides.HearAll;
+
+                    response = overrides.HearAll ? "You will now hear everyone" : "You will no longer hear everyone";
+                    return true;
+                }
+
                 List<ReferenceHub> players = new List<ReferenceHub>();
                 List<RoleTypeId> roles = new List<RoleTypeId>();
                 List<Team> teams = new List<Team>();
@@ -57,13 +72,6 @@ namespace ListenIn.Commands
                         if (player != null)
                             players.Add(player.ReferenceHub);
                     }
-                }
-
-                VoiceOverrides overrides;
-                if (!Extensions.Overrides.TryGetValue(playerSender.ReferenceHub, out overrides))
-                {
-                    overrides = new VoiceOverrides();
-                    Extensions.Overrides.Add(playerSender.ReferenceHub, overrides);
                 }
 
                 foreach (RoleTypeId role in roles)

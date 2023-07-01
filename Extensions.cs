@@ -10,6 +10,8 @@ namespace ListenIn
 {
     public class VoiceOverrides
     {
+        public bool HearAll = false;
+
         public List<RoleTypeId> RoleOverrides = new List<RoleTypeId>();
 
         public List<Team> TeamOverrides = new List<Team>();
@@ -23,7 +25,7 @@ namespace ListenIn
 
         public static bool CanHearOverride(this ReferenceHub hub, ReferenceHub from)
         {
-            if (Overrides.TryGetValue(hub, out VoiceOverrides vo) && (vo.RoleOverrides.Contains(from.GetRoleId()) 
+            if (Overrides.TryGetValue(hub, out VoiceOverrides vo) && (vo.HearAll || vo.RoleOverrides.Contains(from.GetRoleId()) 
                 || vo.PlayerOverrides.Contains(from)))
                 return true;
             return false;
