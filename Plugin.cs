@@ -17,7 +17,7 @@ namespace ListenIn
 
         public static Harmony Harmony { get; private set; }
 
-        [PluginEntryPoint("ListenIn", "1.0.1", "Listen to voice chat happening in your server", "Steven4547466")]
+        [PluginEntryPoint("ListenIn", "1.0.2", "Listen to voice chat happening in your server", "Steven4547466")]
         void LoadPlugin()
         {
             Singleton = this;

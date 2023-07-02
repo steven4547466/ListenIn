@@ -26,7 +26,7 @@ namespace ListenIn
         public static bool CanHearOverride(this ReferenceHub hub, ReferenceHub from)
         {
             if (Overrides.TryGetValue(hub, out VoiceOverrides vo) && (vo.HearAll || vo.RoleOverrides.Contains(from.GetRoleId()) 
-                || vo.PlayerOverrides.Contains(from)))
+                || vo.TeamOverrides.Contains(from.GetTeam()) || vo.PlayerOverrides.Contains(from)))
                 return true;
             return false;
         }
