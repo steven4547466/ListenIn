@@ -63,11 +63,11 @@ namespace ListenIn.Commands
                     }
                     else
                     {
-                        Player player = null;
-                        if (int.TryParse(arguments.ElementAt(0), out int id))
+                        Player player;
+                        if (int.TryParse(str, out int id))
                             player = Player.Get(id);
                         else
-                            player = GetPlayer(arguments.ElementAt(0));
+                            player = GetPlayer(str);
 
                         if (player != null)
                             players.Add(player.ReferenceHub);
