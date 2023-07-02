@@ -12,17 +12,22 @@ namespace ListenIn
 {
     public class Plugin
     {
+        [PluginConfig]
+        public Config Config;
+
         public static Plugin Singleton { get; private set; }
         public static PluginHandler PluginHandler { get; private set; }
 
         public static Harmony Harmony { get; private set; }
 
-        [PluginEntryPoint("ListenIn", "1.0.3", "Listen to voice chat happening in your server", "Steven4547466")]
+        [PluginEntryPoint("ListenIn", "1.1.0", "Listen to voice chat happening in your server", "Steven4547466")]
         void LoadPlugin()
         {
             Singleton = this;
             PluginHandler = PluginHandler.Get(this);
             EventManager.RegisterEvents<EventHandlers>(this);
+
+            PluginHandler.SaveConfig(this, nameof(Config));
 
             Harmony = new Harmony($"listenin-{DateTime.Now.Ticks}");
             Harmony.PatchAll();
