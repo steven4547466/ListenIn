@@ -76,6 +76,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\VoiceOverridePlayer.cs" />
     <Compile Include="Commands\VoiceOverride.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="EventHandlers.cs" />
