@@ -20,14 +20,14 @@ namespace ListenIn
 
         public static Harmony Harmony { get; private set; }
 
-        [PluginEntryPoint("ListenIn", "1.1.1", "Listen to voice chat happening in your server", "Steven4547466")]
+        [PluginEntryPoint("ListenIn", "1.1.2", "Listen to voice chat happening in your server", "Steven4547466")]
         void LoadPlugin()
         {
             Singleton = this;
             PluginHandler = PluginHandler.Get(this);
             EventManager.RegisterEvents<EventHandlers>(this);
 
-            PluginHandler.SaveConfig(this, nameof(Config));
+            PluginHandler.LoadConfig(this, nameof(Config));
 
             Harmony = new Harmony($"listenin-{DateTime.Now.Ticks}");
             Harmony.PatchAll();
